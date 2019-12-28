@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>QA School - Oficina</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="jumbotron text-center">
+    <h1>Oficina da QA School</h1>
+    <p>Ambiente destinado à práticas de Automação de Testes</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Checkbox</h3>
+        <p>Marque sua linguagem de programção preferida</p>
+        <form id='checkboxes'>
+          <input type="checkbox" value="java"> Java</br>
+          <input type="checkbox" value="python"> Python</br>
+          <input id="ruby" type="checkbox" value="ruby" checked> Ruby</br>
+          <input name="javascript" type="checkbox" value="javascript"> JavaScript </br>
+          <input type="checkbox" value="php"> PHP
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <h3>Radio Buttons</h3>
+        <p>Escolha seu nível de experiência com testes</p>
+        <form id='radios'>
+          <input name="experience" type="radio" id="none" value="nenhuma"> Nenhuma </br>
+          <input name="experience" type="radio" value="iniciante"> Iniciante </br>
+          <input name="experience" type="radio" id="junior" value="junior"> Júnior </br>
+          <input name="experience" type="radio" value="pleno"> Pleno </br>
+          <input name="experience" type="radio" value="senior"> Sênior
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <h3>Dropdown</h3>
+        <p>Selecione a empresa que você acha ser a melhor</p>
+        <select id='dropdown' class='companies'>
+          <option value="" disabled="disabled" selected="selected">Selecione uma empresa</option>
+          <option value="1">Amazon</option>
+          <option value="2">Apple</option>
+          <option value="3">Facebook</option>
+          <option value="4">Google</option>
+          <option value="5">Twitter</option>
+        </select>
+      </div>
+    </div>
+    <br><hr><br>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Table</h3>
+        <p>Worldwide Open Job Positions</p>
+        <table id="actors" class="table table-striped">
+          <thead>
+            <tr>
+              <th><span>Company</span></th>
+              <th><span>Position</span></th>
+              <th><span>Language</span></th>
+              <th><span>Income</span></th>
+              <th><span>Ações</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Amazon</td>
+              <td>Senior QA Tester Enginer</td>
+              <td class="language">Java</td>
+              <td>$ <span class="pay">10.000.000</span></td>
+              <td>
+                <a href="#" class="edit">edit</button>
+                <a href="#" class="delete">delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Apple</td>
+              <td>QA Leader</td>
+              <td class="language">Python</td>
+              <td>$ <span class="pay">14.000.000</span></td>
+              <td>
+                <a href="#" class="edit">edit</button>
+                <a href="#" class="delete">delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Facebook</td>
+              <td>QA Manager</td>
+              <td class="language">Ruby</td>
+              <td>$ <span class="pay">16.000.000</span></td>
+              <td>
+                <a href="#" class="edit">edit</button>
+                <a href="#" class="delete">delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Google</td>
+              <td>QA Consultant Tester</td>
+              <td class="language">JavaScript</td>
+              <td>$ <span class="pay">4.500.000</span></td>
+              <td>
+                <a href="#" class="edit">edit</button>
+                <a href="#" class="delete">delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Twitter</td>
+              <td>Junior QA Tester Engineer</td>
+              <td class="language">PHP</td>
+              <td>$ <span class="pay">6.000.000</span></td>
+              <td>
+                <a href="#" class="edit">edit</button>
+                <a href="#" class="delete">delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <br><hr>
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://www.qaschool.com.br"> QA School</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+</body>
+
+</html>
