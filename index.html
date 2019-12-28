@@ -9,6 +9,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="./js/bootstrap.min.js"></script>
+  <link href="./css/select2.min.css" rel="stylesheet" />
+  <script src="./js/select2.min.js"></script>
 </head>
 
 <body>
@@ -22,7 +24,7 @@
     <div class="row">
       <div class="col-sm-4">
         <h3>Checkbox</h3>
-        <p>Marque sua linguagem de programção preferida</p>
+        <p>Marque sua linguagem de programação preferida</p>
         <form id='checkboxes'>
           <input type="checkbox" value="java"> Java</br>
           <input type="checkbox" value="python"> Python</br>
@@ -43,16 +45,17 @@
         </form>
       </div>
       <div class="col-sm-4">
-        <h3>Dropdown</h3>
-        <p>Selecione a empresa que você acha ser a melhor</p>
-        <select id='dropdown' class='companies'>
-          <option value="" disabled="disabled" selected="selected">Selecione uma empresa</option>
-          <option value="1">Amazon</option>
-          <option value="2">Apple</option>
-          <option value="3">Facebook</option>
-          <option value="4">Google</option>
-          <option value="5">Twitter</option>
-        </select>
+        <h3>File Upload</h3>
+        <p>Selecione um arquivo para realizar o upload</p>
+        <br>
+        <form>
+          <div class="custom-file" style="width: 100%">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Selecionar Arquivo</label>
+          </div>
+          <div>&nbsp;</div>
+          <button type="button" id="upload" class="btn btn-primary" disabled>Enviar Arquivo</button>
+        </form>
       </div>
     </div>
     <br><hr><br>
@@ -125,6 +128,69 @@
         </table>
       </div>
     </div>
+    <br><hr><br>
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Select</h3>
+        <p>Selecione a empresa que você acha ser a melhor</p>
+        <div class="form-inline">
+          <select id='dropdown' name="companies" class="form-control form-control-sm" style="width: 70%">
+            <option value="" disabled="disabled" selected="selected">Selecione</option>
+            <option value="1">Amazon</option>
+            <option value="2">Apple</option>
+            <option value="3">Facebook</option>
+            <option value="4">Google</option>
+            <option value="5">Twitter</option>
+          </select>
+          <div>&nbsp;</div>
+          <button type="button" id="companies" class="btn btn-dark btn-sm">Desabilitar</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Select2</h3>
+        <p>Selecione o(s) SO(s) de sua preferência</p>
+        <select class="select-os" name="os" style="width: 70%">
+          <option value="" disabled="disabled" selected="selected">Selecione</option>
+          <option value="LINUX">Linux</option>
+          <option value="MACOS">MacOS</option>
+          <option value="WINDOWS">Windows</option>
+        </select>
+        <button type="button" id="operating-systems" class="btn btn-dark btn-sm">Desabilitar</button>
+      </div>
+      <div class="col-sm-4">
+        <h3>Select2 Múltiplo</h3>
+        <p>Selecione o(s) SO(s) de sua preferência</p>
+        <select class="select-os-multi" name="os[]" style="width: 70%" multiple="multiple">
+          <option value="LINUX">Linux</option>
+          <option value="MACOS">MacOS</option>
+          <option value="WINDOWS">Windows</option>
+        </select>
+        <button type="button" id="operating-systems-multi" class="btn btn-dark btn-sm">Desabilitar</button>
+      </div>
+    </div>
+    <br><hr><br>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Forms</h3>
+        <p>Preencha o formulário para realizar o seu cadastro</p>
+        <form id="cadastro">
+          <div class="row">
+            <div class="col-md-3">
+              <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" required>
+            </div>
+            <div class="col-md-4">
+              <input type="email" class="form-control" id="email" placeholder="Email" required>
+            </div>
+            <div class="col-md-2">
+              <button type="submit" id="cadastrar" class="btn btn-primary">Cadastrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -139,6 +205,93 @@
 
   </footer>
   <!-- Footer -->
+
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+      var button = '#upload'
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+      if($(this).val()==''){
+        $(button).attr('disabled',true)
+      } else {
+        $(button).attr('disabled',false);
+      }
+    });
+  </script>
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $("#cadastro").on("change", function() {
+      var button = '#upload'
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+      if($(this).val()==''){
+        $(button).attr('disabled',true)
+      } else {
+        $(button).attr('disabled',false);
+      }
+    });
+  </script>
+  <script>
+    $(function () {
+      $('#upload').click(function () {
+        alert('O arquivo foi submetido com sucesso!');
+        location.reload();
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      $('#cadastrar').click(function () {
+        alert('Cadastro realizado com sucesso!');
+        location.reload();
+      });
+    });
+  </script>
+  <script type='text/javascript'>
+    $(function () {
+      $('#companies').click(function () {
+        var select = '#dropdown'
+        if ($(select).prop("disabled") == true) {
+            $(this).html("Desabilitar");
+            $(select).prop('disabled', false);
+        } else {
+            $(this).html("Habilitar");
+            $(select).prop('disabled', true);
+        }
+      });
+    });
+  </script>
+  <script type='text/javascript'>
+    $(function () {
+      $('.select-os').select2();
+      $('#operating-systems').click(function () {
+        var select = '.select-os'
+        if ($(select).select2().prop("disabled") == true) {
+            $(this).html("Desabilitar");
+            $(select).select2().prop('disabled', false);
+        } else {
+            $(this).html("Habilitar");
+            $(select).select2().prop('disabled', true);
+        }
+      });
+    });
+  </script>
+  <script type='text/javascript'>
+    $(function () {
+    $('.select-os-multi').select2();
+      $('#operating-systems-multi').click(function () {
+        var select = '.select-os-multi'
+        if ($(select).select2().prop("disabled") == true) {
+            $(this).html("Desabilitar");
+            $(select).select2().prop('disabled', false);
+        } else {
+            $(this).html("Habilitar");
+            $(select).select2().prop('disabled', true);
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
