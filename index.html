@@ -499,6 +499,13 @@
     });
 
     $(function () {
+      $('#cadastrar').click(function () {
+        alert('Cadastro realizado com sucesso!');
+        location.reload();
+      });
+    });
+
+    $(function () {
       $('#random-ok').click(function () {
         var x = document.getElementsByName("random-field")[0].value;
         x = "Você digitou: " + x
