@@ -11,12 +11,40 @@
   <script src="./js/bootstrap.min.js"></script>
   <link href="./css/select2.min.css" rel="stylesheet" />
   <script src="./js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <style>
+    .drag {
+      background-color: #1e85b0; 
+      border: 2px solid;
+      cursor: move;
+      height: 100px;
+      text-align: center;
+      width: 140px;
+    }
+    .drag img {
+      width: 70%;
+    }
+    .caption {
+      display: none;
+    }
+    .languages:hover .caption {
+      display: block;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand">QA School</a>
+    <div class="form-inline">
+      <a href="" class="btn btn-outline-success my-2 my-sm-0" type="button">Entrar</a>
+      <div>&nbsp;&nbsp;</div>
+      <a href="" class="btn btn-outline-warning my-2 my-sm-0" type="button">Registrar</a>
+    </div>
+  </nav>
   <div class="jumbotron text-center">
-    <h1>Oficina da QA School</h1>
+    <h1>Oficina de Testes</h1>
     <p>Ambiente destinado à práticas de Automação de Testes</p>
   </div>
 
@@ -62,7 +90,7 @@
     <div class="row">
       <div class="col-sm-12">
         <h3>Table</h3>
-        <p>Worldwide Open Job Positions</p>
+        <p>Vagas de Emprego em Aberto</p>
         <table id="actors" class="table table-striped">
           <thead>
             <tr>
@@ -70,6 +98,7 @@
               <th><span>Cargo</span></th>
               <th><span>Linguagem</span></th>
               <th><span>Salário</span></th>
+              <th><span>Local</span></th>
               <th><span>Ações</span></th>
             </tr>
           </thead>
@@ -79,6 +108,7 @@
               <td>Senior QA Tester Engineer</td>
               <td class="language">Java</td>
               <td>R$ <span class="pay">8.000,00</span></td>
+              <td>São Paulo - Brasil</td>
               <td>
                 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#amazon">Detalhes</button>
               </td>
@@ -110,6 +140,7 @@
               <td>QA Leader</td>
               <td class="language">Python</td>
               <td>R$ <span class="pay">10.000,00</span></td>
+              <td>São Francisco - EUA</td>
               <td>
                 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#apple">Detalhes</button>
               </td>
@@ -141,6 +172,7 @@
               <td>QA Manager</td>
               <td class="language">Ruby</td>
               <td>R$ <span class="pay">12.000,00</span></td>
+              <td>Palo Alto - EUA</td>
               <td>
                 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#facebook">Detalhes</button>
               </td>
@@ -172,6 +204,7 @@
               <td>QA Consultant Tester</td>
               <td class="language">JavaScript</td>
               <td>R$ <span class="pay">3.400,00</span></td>
+              <td>São Paulo - Brasil</td>
               <td>
                 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#google">Detalhes</button>
               </td>
@@ -203,6 +236,7 @@
               <td>Junior QA Tester Engineer</td>
               <td class="language">PHP</td>
               <td>R$ <span class="pay">2.500,00</span></td>
+              <td>São Paulo - Brasil</td>
               <td>
                 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#twitter">Detalhes</button>
               </td>
@@ -263,7 +297,7 @@
         <button type="button" id="operating-systems" class="btn btn-dark btn-sm">Desabilitar</button>
       </div>
       <div class="col-sm-4">
-        <h3>Select2 Múltiplo</h3>
+        <h3>Select2 Multiple</h3>
         <p>Selecione o(s) SO(s) de sua preferência</p>
         <select class="select-os-multi" name="os[]" style="width: 70%" multiple="multiple">
           <option value="LINUX">Linux</option>
@@ -275,25 +309,148 @@
     </div>
     <br><hr><br>
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-8">
         <h3>Forms</h3>
         <p>Preencha o formulário para realizar o seu cadastro</p>
         <form id="cadastro">
-          <div class="row">
-            <div class="col-md-3">
-              <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+          <div class="form-row">
+            <div class="form-row col-md-12">
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" required>
+              </div>
             </div>
-            <div class="col-md-3">
-              <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" required>
-            </div>
-            <div class="col-md-4">
-              <input type="email" class="form-control" id="email" placeholder="Email" required>
-            </div>
-            <div class="col-md-2">
-              <button type="submit" id="cadastrar" class="btn btn-primary">Cadastrar</button>
+            <br><br>
+            <div class="form-row col-md-12">
+              <div class="col-md-10">
+                <input type="email" class="form-control" id="email" placeholder="Email" required>
+              </div>
+              <div class="col-md-2">
+                <button type="submit" id="cadastrar" class="btn btn-primary btn-block">Cadastrar</button>
+              </div>
             </div>
           </div>
         </form>
+      </div>
+      <div class="col-sm-4">
+        <h3>Windows</h3>
+        <p>Clique no botão abaixo para abrir nova janela</p>
+        <a class="btn btn-danger btn-block" style="padding: 6% 0; font-size: 28px;" href="#" target="_blank" type="button">Abrir Nova Aba</a>
+      </div>
+    </div>
+    <br><hr><br>
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Alerts</h3>
+        <p>Clique em cada um dos alertas</p>
+        <button class="btn-success" onclick="alertar()">Alert</button>
+        <button class="btn-danger" onclick="confirmar()">Confirm</button>
+        <button class="btn-info" onclick="perguntar()">Prompt</button>
+        <button class="btn-warning" onclick="sweet()">SweetAlert2</button>
+        <br><br>
+        <p id="confirmacao"></p>
+      </div>
+      <div class="col-sm-4">
+        <h3>Drag & Drop</h3>
+        <p>Clique, segure e arraste a imagem</p>
+        <div class="form-row" id="drags">
+          <div class="col-sm-6">
+            <div class="drag" draggable="true"></div>
+          </div>
+          <div class="col-sm-6">
+            <div class="drag" draggable="true">
+              <img src="./loader.gif" class="drop" alt="Drag and Drop">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Hovers</h3>
+        <p>Passe o mouse sobre as imagens</p>
+        <div class="form-row">
+          <div class="languages">
+            <img src="./javascript.png" alt="JavasSript" style="width: 100px;">
+            <div class="caption">
+              <h6>JavaScript</h6>
+            </div>
+          </div>
+          <div>&nbsp;&nbsp;</div>
+          <div class="languages">
+            <img src="./ruby.png" alt="Ruby" style="width: 100px;">
+            <div class="caption">
+              <h6>Ruby</h6>
+            </div>
+          </div>
+          <div>&nbsp;&nbsp;</div>
+          <div class="languages">
+            <img src="./kotlin.png" alt="Kotlin" style="width: 100px;">
+            <div class="caption">
+              <h6>Kotlin</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><hr><br>
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Random Field</h3>
+        <p>O campo abaixo pode não ser o mesmo</p><br>
+        <div class="form-group">
+          <b><label id="randomico"></label></b>
+          <div class="form-row">
+            <input class="form-control col-md-9 random" type="number" name="random-field">
+            <div>&nbsp;</div>
+            <button id="random-ok" class="btn btn-primary btn-block col-md-2" disabled>OK</button>
+          </div>
+        </div>
+        <p id="random-text"></p>
+      </div>
+      <div class="col-sm-4">
+        <h3>Keyboard</h3>
+        <p>Pressione qualquer tecla dentro do campo</p><br>
+        <div class="form-group">
+          <b><label>Clique no campo e pressione uma tecla</label></b>
+          <input type="text" class="form-control keys" id="keyboard">
+        </div>
+        <p id="key-text"></p>
+      </div>
+      <div class="col-sm-4">
+        <h3>Lists</h3>
+        <p>Clique no item para acessá-lo</p>
+        <div class="list-group">
+          <a href="https://github.com/teamcapybara/capybara" class="list-group-item list-group-item-action list-group-item-primary d-flex justify-content-between align-items-center">
+            Capybara
+            <span class="badge badge-dark badge-pill">267</span>
+          </a>
+          <a href="https://github.com/site-prism/site_prism" class="list-group-item list-group-item-action list-group-item-success d-flex justify-content-between align-items-center">
+            SitePrism
+            <span class="badge badge-dark badge-pill">49</span>
+          </a>
+          <a href="https://github.com/ged/ruby-pg" class="list-group-item list-group-item-action list-group-item-warning d-flex justify-content-between align-items-center">
+            PostgreSQL
+            <span class="badge badge-dark badge-pill">31</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <br><hr><br>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>iFrames</h3>
+        <hr>
+        <div class="form-row">
+          <div class="form-group col-sm-6">
+            <iframe id="youtube" name="lambda" src="https://www.youtube.com/embed/cW5RY_x0Pbs" width="100%" height="315" scrolling="no" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3 class="text-center text-success">Fácil</h3>
+          </div>
+          <div class="form-group col-sm-6">
+            <iframe src="https://www.youtube.com/embed/cW5RY_x0Pbs" width="100%" height="315" scrolling="no" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3 class="text-center text-danger">Árduo</h3>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -323,13 +480,9 @@
         $(button).attr('disabled',false);
       }
     });
-  </script>
-  <script>
-    // Add the following code if you want the name of the file appear on select
-    $("#cadastro").on("change", function() {
-      var button = '#upload'
-      var fileName = $(this).val().split("\\").pop();
-      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+
+    $(".random").on("keyup", function() {
+      var button = '#random-ok'
       if($(this).val()==''){
         $(button).attr('disabled',true)
       } else {
@@ -344,14 +497,25 @@
         location.reload();
       });
     });
-  </script>
-  <script>
+
     $(function () {
-      $('#cadastrar').click(function () {
-        alert('Cadastro realizado com sucesso!');
-        location.reload();
+      $('#random-ok').click(function () {
+        var x = document.getElementsByName("random-field")[0].value;
+        x = "Você digitou: " + x
+        document.getElementById("random-text").innerHTML = x;
       });
     });
+  </script>
+  <script>
+    $(".keys").on("keydown", function(event){
+      document.getElementById("keyboard").value = '';
+      var key_press = [];
+      key_press.push(event.which);
+      key = 'Você pressionou a tecla: ' + keyboardMap[key_press[0]];
+      document.getElementById("key-text").innerHTML = key;
+    });
+
+    var keyboardMap = ["","","","CANCEL","","","HELP","","BACK_SPACE","TAB","","","CLEAR","ENTER","RETURN","","SHIFT","CONTROL","ALT","PAUSE","CAPS_LOCK","KANA","EISU","JUNJA","FINAL","HANJA","","ESCAPE","CONVERT","NONCONVERT","ACCEPT","MODECHANGE","SPACE","PAGE_UP","PAGE_DOWN","END","HOME","LEFT","UP","RIGHT","DOWN","SELECT","PRINT","EXECUTE","PRINTSCREEN","INSERT","DELETE","","0","1","2","3","4","5","6","7","8","9","COLON","SEMICOLON","LESS_THAN","EQUALS","GREATER_THAN","QUESTION_MARK","AT","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","WIN","","CONTEXT_MENU","","SLEEP","NUMPAD0","NUMPAD1","NUMPAD2","NUMPAD3","NUMPAD4","NUMPAD5","NUMPAD6","NUMPAD7","NUMPAD8","NUMPAD9","MULTIPLY","ADD","SEPARATOR","SUBTRACT","DECIMAL","DIVIDE","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","F13","F14","F15","F16","F17","F18","F19","F20","F21","F22","F23","F24","","","","","","","","","NUM_LOCK","SCROLL_LOCK","WIN_OEM_FJ_JISHO","WIN_OEM_FJ_MASSHOU","WIN_OEM_FJ_TOUROKU","WIN_OEM_FJ_LOYA","WIN_OEM_FJ_ROYA","","","","","","","","","","CIRCUMFLEX","EXCLAMATION","DOUBLE_QUOTE","HASH","DOLLAR","PERCENT","AMPERSAND","UNDERSCORE","OPEN_PAREN","CLOSE_PAREN","ASTERISK","PLUS","PIPE","HYPHEN_MINUS","OPEN_CURLY_BRACKET","CLOSE_CURLY_BRACKET","TILDE","","","","","VOLUME_MUTE","VOLUME_DOWN","VOLUME_UP","","","","","COMMA","","PERIOD","SLASH","BACK_QUOTE","","","","","","","","","","","","","","","","","","","","","","","","","","","OPEN_BRACKET","BACK_SLASH","CLOSE_BRACKET","QUOTE","","META","ALTGR","","WIN_ICO_HELP","WIN_ICO_00","","WIN_ICO_CLEAR","","","WIN_OEM_RESET","WIN_OEM_JUMP","WIN_OEM_PA1","WIN_OEM_PA2","WIN_OEM_PA3","WIN_OEM_WSCTRL","WIN_OEM_CUSEL","WIN_OEM_ATTN","WIN_OEM_FINISH","WIN_OEM_COPY","WIN_OEM_AUTO","WIN_OEM_ENLW","WIN_OEM_BACKTAB","ATTN","CRSEL","EXSEL","EREOF","PLAY","ZOOM","","PA1","WIN_OEM_CLEAR",""];
   </script>
   <script type='text/javascript'>
     $(function () {
@@ -396,6 +560,104 @@
         }
       });
     });
+  </script>
+  <script>
+    function alertar() {
+      x = 'Eu sou um alert!'
+      alert(x);
+      document.getElementById("confirmacao").innerHTML = x;
+    };
+
+    function confirmar() {
+      var x;
+      var r = confirm('Clique em OK para confirmar.');
+      if (r == true) {
+        x = "Yeah! Você confirmou."
+      } else {
+        x = "Ops! Você cancelou."
+      }
+      document.getElementById("confirmacao").innerHTML = x;
+    };
+
+    function perguntar() {
+      var x;
+      var idade = prompt('Qual sua idade?');
+      if (idade != null && idade.length > 0) {
+        x = "Você tem: " + idade + " anos.";
+      } else {
+        x = "Ops! Você não informou sua idade."
+      }
+      document.getElementById("confirmacao").innerHTML = x;
+    };
+    function sweet() {
+      Swal.fire("Parabéns!", "Você agora conhece todos os tipos de alerta.", "success");
+    }
+  </script>
+  <script>
+    var dragSrcEl = null;
+
+    function handleDragStart(e) {
+      this.style.opacity = '100';
+      dragSrcEl = this;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML);
+    }
+
+    function handleDragOver(e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      e.dataTransfer.dropEffect = 'move';
+      return false;
+    }
+
+    function handleDragEnter(e) {
+      this.classList.add('over');
+    }
+
+    function handleDragLeave(e) {
+      this.classList.remove('over');
+    }
+
+    function handleDrop(e) {
+      if (e.stopPropagation) {
+        e.stopPropagation();
+      }
+      if (dragSrcEl != this) {
+        dragSrcEl.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
+      }
+      return false;
+    }
+
+    var cols = document.querySelectorAll('#drags .drag');
+    [].forEach.call(cols, function(col) {
+      col.addEventListener('dragstart', handleDragStart, false);
+      col.addEventListener('dragenter', handleDragEnter, false);
+      col.addEventListener('dragover', handleDragOver, false);
+      col.addEventListener('dragleave', handleDragLeave, false);
+      col.addEventListener('drop', handleDrop, false);
+
+    });
+  </script>
+  <script>
+    function randomico() {
+      const capitalize = s => {
+        if (typeof s !== 'string') {
+          return '';
+        }
+        word = s.charAt(0).toUpperCase() + s.slice(1);
+        if (word === 'Mes') {
+          word = 'Mês'
+        }
+        return word  + ' de Nascimento';
+      };
+      var types = ['dia', 'mes', 'ano'];
+      var randomNumber = Math.floor(Math.random() * types.length);
+      document.getElementById("randomico").innerHTML = capitalize(types[randomNumber]);
+      document.getElementsByName("random-field")[0].setAttribute('id', types[randomNumber]);
+    }
+    window.onload = randomico();
   </script>
 </body>
 
