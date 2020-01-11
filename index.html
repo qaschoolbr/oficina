@@ -328,7 +328,7 @@
                 <input type="email" class="form-control" id="email" placeholder="Email" required>
               </div>
               <div class="col-md-2">
-                <button type="submit" id="cadastrar" class="btn btn-primary btn-block">Cadastrar</button>
+                <button type="submit" id="cadastrar" class="btn btn-primary btn-block" disabled>Cadastrar</button>
               </div>
             </div>
           </div>
@@ -361,7 +361,7 @@
           </div>
           <div class="col-sm-6">
             <div class="drag" draggable="true">
-              <img src="./loader.gif" class="drop" alt="Drag and Drop">
+              <img src="./img/loader.gif" class="drop" alt="Drag and Drop">
             </div>
           </div>
         </div>
@@ -371,21 +371,21 @@
         <p>Passe o mouse sobre as imagens</p>
         <div class="form-row">
           <div class="languages">
-            <img src="./javascript.png" alt="JavasSript" style="width: 100px;">
+            <img src="./img/javascript.png" alt="JavasSript" style="width: 100px;">
             <div class="caption">
               <h6>JavaScript</h6>
             </div>
           </div>
           <div>&nbsp;&nbsp;</div>
           <div class="languages">
-            <img src="./ruby.png" alt="Ruby" style="width: 100px;">
+            <img src="./img/ruby.png" alt="Ruby" style="width: 100px;">
             <div class="caption">
               <h6>Ruby</h6>
             </div>
           </div>
           <div>&nbsp;&nbsp;</div>
           <div class="languages">
-            <img src="./kotlin.png" alt="Kotlin" style="width: 100px;">
+            <img src="./img/kotlin.png" alt="Kotlin" style="width: 100px;">
             <div class="caption">
               <h6>Kotlin</h6>
             </div>
@@ -499,9 +499,19 @@
     });
 
     $(function () {
+      $("#nome, #sobrenome, #email").on("keyup", function() {
+        var button = "#cadastrar";
+        if ($(this).val() != "" && $("#sobrenome").val() != "" && $("#email").val() != "") {
+          $(button).removeAttr("disabled");
+        } else {
+          $(button).attr("disabled", true);
+        }
+      });
+    });
+
+    $(function () {
       $('#cadastrar').click(function () {
         alert('Cadastro realizado com sucesso!');
-        location.reload();
       });
     });
 
